@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>分词标注</title>
+    <link href="../css/note.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <form action="note.html" method="POST" enctype="multipart/form-data">
+            <textarea v-bind:value="message" rows="20" cols="60" placeholder="请输入" id="text">{{message}}</textarea><br>
+            <a><input type="file" id="file"></a>
+            <button type="submit">确定</button>
+        </form>
+    </div>
+    <div class="card">
+        <p id="result">结果</p>
+        <p id="type">动词</p>
+        <form  name="verb" id="res">
+            <input type="checkbox" value="kill">杀害</input>
+            <input type="checkbox" value="go">前往</input>
+            <input type="checkbox" value="run">逃离</input>
+            <input type="checkbox" value="hide">躲避</input>
+            <input type="checkbox" value="cheat">欺骗</input>
+        </form>
+        <button type="submit" value="">保存</button>
+    </div>
+</div>
+
+<script>
+    let va = new Vue({
+        el: '#text',
+        data: {
+            message: ""
+        }
+    })
+</script>
+</body>
+</html>

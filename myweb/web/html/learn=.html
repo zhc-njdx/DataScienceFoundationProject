@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning</title>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="../WEB-INF/lib/jquery-3.6.0.js"></script>
+</head>
+<body>
+
+
+<div id="father">
+<h1>标题1</h1>
+<p class="p1">p1</p>
+<p id="p2">p2</p>
+</div>
+
+    <form action="https://www.baidu.com" method="post" onsubmit="return aaa()">
+        <p>
+            <span>用户名：</span> <label for="username"><input type="text" id="username" name="username"></label>
+        </p>
+        <p>
+            <span>密码：</span> <label for="input-password"><input type="password" name="password" id="input-password"></label>
+        </p>
+        <p>
+            <label for="password"> <input type="hidden" id="password" name="md5-password"> </label>
+        </p>
+        <p>
+            <button type="submit">提交</button>
+        </p>
+    </form>
+
+<a href="" id="test-jQuery">点我</a>
+
+<script>
+    // submit 函数名 不可行 ？？？
+    // 换成 aaa 就有用
+    function aaa(){
+        // console.log(1111);
+        // alert(1);
+        let username = document.getElementById('username');
+        let pwd = document.getElementById('input-password');
+        let md5pwd = document.getElementById('password');
+        // console.log(username.value);
+        //MD5 加密算法
+        // pwd.value = md5();
+        md5pwd.value = md5(pwd.value);
+        console.log(md5pwd.value);
+        // console.log(pwd.value);
+        return false;
+    }
+
+    let h1 = document.getElementsByTagName("h1");
+    let p1 = document.getElementsByClassName('p1');
+    let p2 = document.getElementById('p2');
+    let father = document.getElementById('father');
+    let children = father.children;
+    // remove 只能 删除 id 的
+    // class 标签的 也没有 parentElement 方法
+    // father.removeChild(p2);
+    let f = p2.parentElement;
+    f.removeChild(p2);
+    let id1 = document.getElementById('id1');
+    /**
+     * id1.innerHTML()
+     * 等一系列的方法来操作网页
+     */
+
+    // let input = document.getElementById('username');
+    $("#test-jQuery").click(function (){
+        alert('hello,jquery!');
+    })
+
+    /**
+     * 鼠标事件
+     * 键盘事件
+     * 其他事件
+     */
+
+    $(function (){
+
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+body {
+	background-image: url("../images/背景1.jpeg");
+}
+
+#爬虫 {
+	width: 400px;
+	/* float: right; */
+}
+
+.selected {
+	color:black;
+}
+
+.unselected {
+	color: deepskyblue;
+}
+
+.image {
+	margin-left: 500px;
+}
+
+.爬虫 {
+	background-color:rgb(187, 212, 233);
+	color: black;
+	padding: 15px;
+	margin: 10px 400px 10px 400px;
+	width: 420px;
+	font-family: my_font1, serif;
+}
+
+.案例 {
+	/* background-image: url("../images/背景3.jpeg"); */
+	margin: 10px 400px 10px 400px;
+}
+
+.分词标注 {
+	background-image: url("../images/背景2.jpeg");
+	margin: 10px 400px 10px 400px;
+	font-family: my_font2, serif;
+}
+
+@font-face { 
+	/* font-properties */ 
+	font-family: my_font1; 
+	src:url('../fonts/MaShanZheng-Regular.ttf')
+}
+
+@font-face {
+	font-family: my_font2;
+	src: url('../fonts/ZCOOLKuaiLe-Regular.ttf');
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>星空</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        html,body{
+            background: black;
+            background-position: center;
+            background-size: 130%;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            width: 5px;
+            height: 5px;
+            background: #FFFFFF;
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: star-shine ease 2s infinite;
+            position: absolute;
+            transform: scale(0.3);
+            /*to {*/
+            /*    transform: rotate(15deg) translate(-200px,200px) scale(0.1);*/
+            /*    opacity: 0;*/
+            /*}*/
+        }
+
+        @keyframes star-shine {
+            0%{
+                opacity: 0.5;
+            }
+            20%{
+                opacity: 0.3;
+            }
+            40%{
+                opacity: 0.4;
+            }
+            60%{
+                opacity: 0.6;
+            }
+            80%{
+                opacity: 0.8;
+            }
+            100%{
+                opacity: 0.6;
+            }
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    for (let i = 0; i < 1000; ++i) {
+        let star = document.createElement("div");
+        star.classList.add("star");
+        star.style.left = Math.random() * window.innerWidth + 'px';
+        star.style.top = Math.random() * window.innerHeight + 'px';
+        star.style.animationDelay = Math.random() * 10 + 'px';
+        document.body.appendChild(star);
+    }
+
+    for (let i = 0; i < 100; ++i) {
+        let meteor = document.createElement('div');
+        meteor.classList.add('meteor');
+        // document.body.appendChild(meteor);
+        meteor.style.left = Math.random() * window.innerWidth * 10 + 'px';
+        meteor.style.top = Math.random() * window.innerHeight * 0.4 + 'px';
+        meteor.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(meteor);
+    }
+
+</script>
+
+</body>
+</html>

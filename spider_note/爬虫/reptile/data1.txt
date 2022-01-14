@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns:diy>
+<head>
+<meta charset="utf-8">
+<title>文书全文</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public">
+<meta name="renderer" content="webkit">
+<!-- <meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+
+<meta http-equiv="X-XSS-Protection" content="0">
+<meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff"
+	http-equiv="Content-Type" />
+<link type="image/x-icon" rel="icon"
+	href="/website/wenshu/images/favicon.ico" />
+<link type="image/x-icon" rel="shortcut icon"
+	href="/website/wenshu/images/favicon.ico" />
+<link rel="stylesheet" href="/website/wenshu/css/common.css" />
+<link rel="stylesheet"
+	href="/website/common/plugins/layui/css/layui.css" />
+<script>
+	/*互联网或法院专网标识(inner:法院内网；outer:互联网)*/
+	$globalNet = "outer";
+	(function() {
+		if (!0) {
+			return;
+		}
+		document.createElement("diy");
+		document.createElement("diy:lawyee");
+	})
+			()
+</script>
+<script src="/website/common/jquery-1.12.4.min.js"></script>
+<script src="/website/common/plugins/layui/layui.js"></script>
+<script src="/website/wenshu/js/version.js"></script>
+<script>
+	(
+					function($) {
+						"use strict";
+						$.event.special.valuechange = {
+							teardown : function(namespaces) {
+								$(this).unbind('.valuechange');
+							},
+							handler : function(e) {
+								$.event.special.valuechange
+										.triggerChanged($(this));
+							},
+							add : function(obj) {
+								$(this)
+										.on(
+												'keyup.valuechange cut.valuechange paste.valuechange input.valuechange',
+												obj.selector,
+												$.event.special.valuechange.handler);
+							},
+							triggerChanged : function(element) {
+								var current = element[0].contentEditable === 'true' ? element
+										.html()
+										: element.val(), previous = typeof element
+										.data('previous') === 'undefined' ? element[0].defaultValue
+										: element.data('previous');
+								if (current !== previous) {
+									element.trigger('valuechange', [ element
+											.data('previous') ]);
+									element.data('previous', current);
+								}
+							}
+						}
+					})(window.jQuery);
+</script>
+<link rel="stylesheet" href="/website/wenshu/css/common.css" />
+<link rel="stylesheet" href="/website/wenshu/css/detail.css" />
+<script src="/website/wenshu/js/accounting.min.js"></script>
+<script src="/website/wenshu/js/divscroll.js"></script>
+<script src="/website/wenshu/js/jquery.PrintArea.js"></script>
+<script src="/website/common/plugins/qrcode/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="../js/strToBinary.js"></script>
+<script src="/website/wenshu/js/quanwendic.js"></script>
+<script src="/website/wenshu/js/common.js"></script>
+
+<!--解决ie9以下媒体查询分辨率问题-->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+
+
+
+<script src="/website/wenshu/181107ANFZ0BXSK4/index.js"></script>
+<!-- Gridsum tracking code begin. 国双流量监测探针-->
+<script type='text/javascript'>
+	if ($globalNet == 'outer1') {
+		var _gsq = _gsq || [];
+		(function() {
+			var s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.async = true;
+			s.src = (location.protocol == 'https:' ? 'https://ssl.'
+					: 'http://static.')
+					+ 'gridsumdissector.com/js/Clients/GWD-002808-030F33/gs.js';
+			var firstScript = document.getElementsByTagName('script')[0];
+			firstScript.parentNode.insertBefore(s, firstScript);
+		})();
+	}
+	
+	 function login(url){
+ 		if(navigator.userAgent.indexOf("MSIE")>-1){
+             var referLink = document.createElement('a');
+             referLink.href=url;
+             document.body.appendChild(referLink);
+             referLink.click();
+         }else{
+         	window.location.href=url;
+         }
+   }
+</script>
+<!--Gridsum tracking code end. -->
+
+</head>
+<style>
+textarea{
+   	resize:none;
+   }
+table{
+   table-layout:fixed;
+   width:100%;
+ }
+.dftable td {
+overflow:hidden;
+text-overflow:ellipsis;
+/* nowrap:false; */
+}
+.del_center{
+	overflow:auto;
+}
+.yjjyPop4{
+	position: fixed;
+	z-index: 9999;
+	width: 800px;
+	height:600px;
+	margin:auto;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	border: 2px solid #B91516;
+	background: #f1f1f1;
+	display: none;
+	border-radius: 5px;
+}
+.yjjyPop4 span{
+	position: absolute;
+	right: -40px;
+    top: -14px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: lighter;
+    cursor: pointer;
+    color: #afacac;
+}
+.yjjyPop4 .yjjyPopBox{
+	padding:10px!important;
+	height: 100%;;
+}
+.yjjyPop4ah{
+	position: fixed;
+	z-index: 9999;
+	width: 800px;
+	height:600px;
+	margin:auto;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	border: 2px solid #B91516;
+	background: #f1f1f1;
+	display: none;
+	border-radius: 5px;
+}
+.yjjyPop4ah span{
+	position: absolute;
+	right: -40px;
+    top: -14px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: lighter;
+    cursor: pointer;
+    color: #afacac;
+}
+.yjjyPop4ah .yjjyPopBoxah{
+	padding:10px!important;
+	height: 100%;;
+}
+.dftable td {
+			padding:5px 5px 5px 0;
+	  	    overflow: hidden;
+	  	    text-overflow: ellipsis;
+	  	    width:40%;
+	  	   /* white-space: nowrap; */
+	  	}
+		.detailBg .detailBox .del_center .PDF_box .PDF_cut .text-ellipsis{
+			display: inline-block;
+			width:auto;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			
+		}
+</style>
+<body>
+<div class="main">
+	<!--意见建议表单-->
+	<div class="item_table" data-id="f5eb660f8f466af5b438451718c06b94">
+		<diy:lawyee id="_view_1541573849000"
+			var-name="_var_name_1541573849000">
+			<div></div>
+		</diy:lawyee>
+	</div>
+	<!--通用页头-->
+	<div class="item_table" data-id="c89158ae76c3b5475d1a6f356f613492">
+		<diy:lawyee id="_view_1541575859000"
+			var-name="_var_name_1541575859000">
+			<div class="haeder">
+				<div class="header_box clearfix">
+					<!-- <div class="fl logo2">
+						<a href="../181029CR4M5A62CH/index.html"><img
+							src="../images/list/logo1.png"></a>
+					</div> -->
+					<div class="fl date">
+			    		<span id="showDate"></span>
+			    	</div>  
+					<div class="fr header-list">
+						<div class="menu_sub">
+						    <iframe id='tologout' style='display:none' src=''></iframe>
+							<span id="showDate"></span> 
+							<a href="#" id="loginLi" onclick="login('../181010CARHS5BS3C/index.html?open=login')">登录</a>
+							<a href="../181010CARHS5BS3C/index.html?open=reg" id="logout">注册</a>
+							<a href="/website/wenshu/181010CARHS5BS3C/index.html?open=login" onclick="yjjy()"  id="yjjyPop">意见建议</a>
+							<a href="../181029CR4M5A62CH/index.html" id="goHome">返回主站</a> <a
+								id="cpwswApp" href="javascript:void(0);" onclick="erweima()">APP下载</a> <a
+								href="/website/wenshu/181109AWZA70BFK4/index.html"
+								target="_blank">使用帮助</a>
+						</div>
+					</div>
+				</div>
+				<a href="/website/wenshu/181029CR4M5A62CH/index.html"><div class="detail-content"></div></a>
+			</div>
+		</diy:lawyee>
+	</div>
+	<!--留言-->
+	<div class="item_table" data-id="3237f2139799e36e583eae9d4b83b43b">
+		<diy:lawyee id="_view_1541573868000"
+			var-name="_var_name_1541573868000">
+			<div></div>
+		</diy:lawyee>
+	</div>
+	<!--法律依据-->
+	<div class="item_table" data-id="69eae2de424785ed64598db272dae82d">
+		<diy:lawyee id="_view_1541641136000"
+			var-name="_var_name_1541641136000">
+			<div></div>
+		</diy:lawyee>
+	</div>
+	<!--东法 案由-->
+	<div class="yjjyPop4" id="dfay01">
+		<span id="closedf">&times;</span>
+		<div class="yjjyPopBox">
+			<iframe id="dfiframe" src="" width="100%" height="100%"></iframe>
+		</div>
+	</div>
+	<!--东法 案号-->
+	<div class="yjjyPop4ah" id="dfah01">
+		<span id="closedfah">&times;</span>
+		<div class="yjjyPopBoxah">
+			<iframe id="dfahiframe" src="" width="100%" height="100%"></iframe>
+		</div>
+	</div>
+	<!--全文主体-->
+	<div class="detailBg">
+		<div class="detailBox clearfix">
+			<!--目录-->
+			<div class="item_table" data-id="23b368d12529a8f417a7309c92f9c277">
+				<diy:lawyee id="_view_1541573880000"
+					var-name="_var_name_1541573880000">
+					<div></div>
+				</diy:lawyee>
+			</div>
+			<!--全文主体-->
+			<div class="item_table" data-id="fad25355e65703af7c04f0ae75ea255a">
+				<diy:lawyee id="_view_1541573883000"
+					var-name="_var_name_1541573883000">
+					<div></div>
+				</diy:lawyee>
+			</div>
+			<!--全文右侧-->
+			<div class="item_table" data-id="fec26deeecb37e771537b76fd72dbed5">
+				<diy:lawyee id="_view_1541573889000"
+					var-name="_var_name_1541573889000">
+					<div></div>
+				</diy:lawyee>
+			</div>
+		</div>
+	</div>
+	<!--页尾-->
+	<div class="item_table" data-id="a6939a31e3a69e8039d23ae0ee599151">
+		<diy:lawyee id="_view_1541574019000"
+			var-name="_var_name_1541574019000">
+			<div></div>
+		</diy:lawyee>
+	</div>
+	<!--分享、扫码-->
+	<div class="item_table" data-id="f87919593051c14f30858a1e029ee13d">
+		<diy:lawyee id="_view_1541573904000"
+			var-name="_var_name_1541573904000">
+			<div></div>
+		</diy:lawyee>
+	</div>
+
+
+
+
+</div>
+
+</body>
+</html>

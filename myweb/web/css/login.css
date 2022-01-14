@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    padding: 0;
+    /*background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);*/
+    background: #ebf5fc no-repeat;
+}
+
+
+.title{
+    color: transparent;
+    font-size: 72px;
+    position: relative;
+    font-family: title-font, serif;
+    text-align: center;
+    margin: 10px;
+    /*transform: translate(-50%,-50%);*/
+    /*left: 20%;*/
+    /*height: 100px;*/
+    /*top: 30px;*/
+    /*background-image: -webkit-linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);*/
+    /*background-image: -webkit-linear-gradient(bottom, #a8edea 0%, #fed6e3 100%);*/
+    background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+    /*background-image: -webkit-linear-gradient(left, #82f5cd, #7fe7e7, #72bbf5, #9095ef);*/
+    -webkit-text-fill-color: transparent;
+    animation: movingWord 6s linear infinite alternate;
+    background-size: 300%,100%;
+    /*background-clip: text;*/
+    -webkit-background-clip: text;
+
+}
+
+@keyframes movingWord {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 300%;
+    }
+}
+
+
+#login{
+    margin: 0 auto;
+    /*margin-top: auto;*/
+    padding: 20px 50px;
+    background-color: #00000090;
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#login h1{
+    color: white;
+}
+
+#login .inputBox{
+    margin-top: 50px;
+}
+
+#login .inputBox .inputText{
+    margin-top: 20px;
+}
+
+#login .inputBox .inputText input{
+    border: 0;
+    padding: 10px 10px;
+    border-bottom: 1px solid white;
+    background-color: #00000000;
+    color: white;
+}
+
+#login .inputBox .inputButton{
+    border: 0;
+    width: 150px;
+    height: 25px;
+    color: white;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+}
+
+@font-face {
+    font-family: title-font;
+    src: url("../fonts/ZCOOLXiaoWei-Regular.ttf");
+}
