@@ -22,5 +22,6 @@
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="library" name="md5" level="application" />
     <orderEntry type="library" name="layui" level="application" />
+    <orderEntry type="library" name="axios" level="application" />
   </component>
 </module>
