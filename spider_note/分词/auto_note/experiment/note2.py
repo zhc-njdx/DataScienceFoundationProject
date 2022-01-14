@@ -28,7 +28,7 @@ print(", ".join(seg_list))
 seg_list = jieba.cut("广西壮族自治区钦州市中级人民法院审理钦州市人民检察院指控原审被告人杨光毅犯强奸罪一案")
 print(", ".join(seg_list))
 seg = pos.cut("审判长李勇")
-# print(seg)
+print(list(seg))
 for word,flag in seg:
     print(word + " " + flag)
 

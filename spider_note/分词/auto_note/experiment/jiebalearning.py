@@ -1,7 +1,7 @@
 #encoding=utf-8
 from __future__ import unicode_literals
 import sys
-sys.path.append("../")
+sys.path.append("../../")
 
 import jieba
 import jieba.posseg

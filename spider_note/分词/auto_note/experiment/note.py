@@ -1,11 +1,7 @@
 # _*_ coding=utf-8 _*_
 
 from ltp import LTP
-import jieba
-import doctotxt
-import re
-
-
+from noteCode import convert
 
 # people_deal 里面进行逻辑处理
 layer = {}
@@ -21,12 +17,12 @@ name = {}
 
 ltp = LTP()
 
-ltp.init_dict(path='word\word.txt',max_window=4)
+ltp.init_dict(path='../word/word.txt', max_window=4)
 
 # 把 case 目录下的 .doc 文件转化为 .txt 文件
 # return case 下的文件名列表
 def get_files():
-    return doctotxt.files_in_dir('case')
+    return convert.files_in_dir('case')
 
 # 将案例按句分开，写进analysis文件
 # return 分开的句子的列表

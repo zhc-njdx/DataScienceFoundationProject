@@ -6,7 +6,7 @@ jieba.load_userdict('word/word.txt')
 
 #encoding=utf-8
 import sys
-sys.path.append("../")
+sys.path.append("../../")
 import jieba.posseg as pseg
 
 jieba.add_word('石墨烯')

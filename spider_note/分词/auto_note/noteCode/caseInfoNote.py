@@ -1,77 +1,22 @@
 # _*_ coding=utf-8 _*_
-
-import jieba
 from ltp import LTP
-import jieba.posseg as poss
-import doctotxt
+import jieba
 import re
-
-# jieba.enable_paddle()
-
-'''
-相对于ltp来说，jieba分词似乎是一个更好的选择，在载入词典放方面
-jieba 和 ltp 结合版
-jieba 对词典更加敏感
-ltp 对名字更加敏感
-
-分词思路如下：
-1、实现对于案例中主要人物的信息抽取
-    extract_person_info方法
-    1) 主要当事人的详细信息: 出生日期、出生地、性别、民族等
-    2) 其他人员的名字和一些信息
-    
-2、实现对于案件信息的抽取，以刑事案件为主，民事和赔偿等案例过于杂乱
-    extract_story方法
-    1) 案由
-    2) 审判结果
-    3) 根据时间来抽取一些事件
-    
-
-3、实现对于案件审理背景的抽取，比如法院，审查人员，审查时间等
-    extract_background方法
-    1) 提取文书类型和机构
-    2) 提取文书时间
-    3) 如果有审判人员，提取出审判人员
-    4) 提取出相关法院
-    
-'''
-
-# 载入词典
-jieba.load_userdict("word\\dic.txt")
-
-ltp = LTP()
-ltp.init_dict("word\\dic.txt")
+import jieba.posseg as poss
 
 case_background = {}
 case_person = {}
 person_statistics = {}
 case_story = {}
 
+ltp = LTP()
+jieba.load_userdict('..\\word\\dic.txt')
+ltp.init_dict('..\\word\\dic.txt')
 
-def print_dic(dic):
-    for key, value in dic.items():
-        print(str(key) + ": ")
-        if isinstance(value,list):
-            for item in value:
-                print(item)
-        else:
-            print(str(value))
-
-
-# 得到文件列表
-def get_file_list():
-    return doctotxt.files_in_dir('case')
-
-
-# 将案例文本分句
-def cut_file_sentences(file_name):
-    file = open("case\\" + file_name, "r", encoding="gb18030", errors="ignore")
-    case = file.read()
-
-    # 使用 ltp 对案例进行分句
-    sentences = ltp.sent_split([case])
-    return sentences
-
+def info_extract(sentences):
+    extract_background(sentences)
+    extract_person_info(sentences)
+    extract_story(sentences)
 
 def extract_background(sentences):
     # 头两行就是总的信息类型
@@ -111,7 +56,7 @@ def extract_background(sentences):
 
             # seg_list = list(jieba.cut(sentences[i]))
             case_background[seg_list[0]] = name
-            case_person[name] ={"身份": seg_list[0]}
+            case_person[name] = {"身份": seg_list[0]}
 
     # 相关法院
     case_background["相关法院"] = []
@@ -199,6 +144,7 @@ def deal_person_info_ltp(seg, pos, index):
 
     case_person[seg[index]] = person
 
+
 # 使用jieba对人物信息进行提取
 
 def deal_person_info_jieba(sentence, name):
@@ -261,7 +207,7 @@ def deal_person_info_jieba(sentence, name):
     if last_m != 0:
         if last_m != len(words) - 1 and re.match("出生.*", words[last_m + 1].word) is None:
             birthday = ""
-    if re.match(".*年.*月.*日",birthday) is None:
+    if re.match(".*年.*月.*日", birthday) is None:
         birthday = ""
 
     if birthday != "":
@@ -283,7 +229,7 @@ def extract_person_info(sentences):
                 name = name.replace('\u3000', '')
                 name = name.replace(' ', '')
                 # print(words[j].word)
-                if name in case_person.keys():
+                if name in person_statistics.keys():
                     person_statistics[name] += 1
                 # 人名第一次出现，加入字典并进行处理
                 else:
@@ -300,46 +246,17 @@ def extract_person_info(sentences):
 
 
 def extract_story(sentences):
-    #针对刑事案件有如下
+    # 针对刑事案件有如下
     begin = 0
     end = 0
-    for i in range(0,len(sentences)):
+    for i in range(0, len(sentences)):
         # print(sentences[i])
-        if re.match("经复核确认.*",sentences[i]) is not None:
+        if re.match("经复核确认.*", sentences[i]) is not None:
             begin = i
-        if re.match("上述事实.*",sentences[i]) is not None:
+        if re.match("上述事实.*", sentences[i]) is not None:
             end = i
     story = []
-    for i in range(begin,end):
+    for i in range(begin, end):
         story.append(sentences[i])
     case_story['案由'] = story
     # print(str(begin)+" " + str(end))
-
-
-'''可视化 将不同词的频率以图表形式呈现出来'''
-import matplotlib.pyplot as plt
-
-def statistics(dic):
-    # 这两行代码解决 plt 中文显示的问题
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
-
-    keys = list(dic.keys())
-    values = list(dic.values())
-
-    plt.bar(keys, values)
-    plt.title('人物出现频次')
-
-    plt.show()
-
-
-if __name__ == '__main__':
-    file = get_file_list()[9]
-    extract_story(cut_file_sentences(file))
-    extract_person_info(cut_file_sentences(file))
-    extract_background(cut_file_sentences(file))
-    print_dic(case_background)
-    print_dic(person_statistics)
-    print_dic(case_person)
-    print_dic(case_story)
-    statistics(person_statistics)

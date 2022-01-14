@@ -9,11 +9,11 @@ ltp = LTP()
 # segment, hidden = ltp.seg(["他/叫/汤姆/去/拿/外衣/。".split('/')], is_preseged=True)
 
 
-# seg, hidden = ltp.seg(["他叫汤姆去拿外衣。"])
-# pos = ltp.pos(hidden)
+seg, hidden = ltp.seg(["他叫汤姆去拿外衣。"])
+pos = ltp.pos(hidden)
 
-# print(seg)
-# print(pos)
+print(seg)
+print(pos)
 # [['他', '叫', '汤姆', '去', '拿', '外衣', '。']]
 # [['r', 'v', 'nh', 'v', 'v', 'n', 'wp']]
 
