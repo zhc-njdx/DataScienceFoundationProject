@@ -64,23 +64,41 @@ body {
     color: #32a3b1;
 }
 
-.container .card a{
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    border-radius: 40px;
-    color: #32a3b1;
-    font-size: 16px;
-    text-decoration: none;
-    /*box-shadow: -4px -4px 15px rgba(255,255,255,1),*/
-    /*4px 4px 15px rgba(0,0,0,-1);*/
+/*.container .card a{*/
+/*    display: inline-block;*/
+/*    padding: 10px 20px;*/
+/*    margin-top: 15px;*/
+/*    border-radius: 40px;*/
+/*    color: #32a3b1;*/
+/*    font-size: 16px;*/
+/*    text-decoration: none;*/
+/*    !*box-shadow: -4px -4px 15px rgba(255,255,255,1),*!*/
+/*    !*4px 4px 15px rgba(0,0,0,-1);*!*/
+/*}*/
+
+.container .card #save-href {
+    display:block;
+
+    width:70px;
+
+    height:16px;
+
+    border:2px outset #eee;
+
+    background:#eee; text-align:center;
+
+    font-size:10px; color:#000; text-decoration:none; padding-top:2px;
+}
+
+.container .card #save-href:hover{
+    border:2px inset #eee; background:#CCCCCC; text-decoration:none;
 }
 
 .container .card #type{
     font-size: 10px;
 }
 
-.container .card button{
+.container .card #begin{
     display: inline-block;
     margin-top: 15px;
     margin-left: 100px;
@@ -88,6 +106,15 @@ body {
     color: #32a3b1;
     font-size: 16px;
     /*text-decoration: none;*/
+}
+
+.container .card #save{
+    text-align: center;
+    display: inline-block;
+    height: 30px;
+    margin-left: 90px;
+    border-radius: 10px;
+    /*font-size: 16px;*/
 }
 
 .container .card #result{

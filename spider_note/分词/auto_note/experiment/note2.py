@@ -38,17 +38,3 @@ name = "人民检察院"
 if re.match(".*人民法院|.*人民检察院",name) is not None:
     print("Yes")
 
-
-
-# seg_list = jieba.cut("审判长　　罗智勇".replace(' ',''))
-# print(list(seg_list))
-# print(", ".join(seg_list))
-# print("审判长　　罗智勇".split(' '))
-# str = "审判"
-# if re.match("书记|审判员|审判员",str) is not None:
-#     print("yes")
-
-# s = "此外，公司拟对全资子公司吉林欧亚置业有限公司增资4.3亿元，增资后，吉林欧亚置业注册资本由7000万元增加到5亿元。吉林欧亚置业主要经营范围为房地产开发及百货零售等业务。目前在建吉林欧亚城市商业综合体项目。2013年，实现营业收入0万元，实现净利润-139.13万元。"
-# for x, w in jieba.analyse.extract_tags(s, withWeight=True):
-#     print('%s %s' % (x, w))
-

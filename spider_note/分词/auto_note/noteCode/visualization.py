@@ -5,7 +5,7 @@
 import matplotlib.pyplot as plt
 
 
-def statistics(dic):
+def statistics(dic, table_type):
     # 这两行代码解决 plt 中文显示的问题
     plt.rcParams['font.sans-serif'] = ['SimHei']
     plt.rcParams['axes.unicode_minus'] = False
@@ -14,6 +14,6 @@ def statistics(dic):
     values = list(dic.values())
 
     plt.bar(keys, values)
-    plt.title('人物出现频次')
+    plt.title(table_type)
 
     plt.show()

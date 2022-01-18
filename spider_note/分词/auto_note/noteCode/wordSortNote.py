@@ -9,13 +9,19 @@
 import jieba
 from ltp import LTP
 
-noun_dic = {}
-verb_dic = {}
-adj_dic = {}
+# 词性列表
+noun_dic = []
+verb_dic = []
+adj_dic = []
+
+# 用于可视化统计
+noun_statistics = {}
+verb_statistics = {}
+adj_statistics = {}
 
 ltp = LTP()
-jieba.load_userdict('..\\word\\dic.txt')
-ltp.init_dict('..\\word\\dic.txt')
+jieba.load_userdict('D:\\study\\DataScienceFoundation\\spider_note\\分词\\auto_note\\word\\dic.txt')
+ltp.init_dict('D:\\study\\DataScienceFoundation\\spider_note\\分词\\auto_note\\word\\dic.txt')
 
 
 def word_sort_note(sentences):
@@ -31,9 +37,10 @@ def verb_note(sentence):
     for i in range(0, len(pos[0])):
         if pos[0][i] == 'v':
             if seg[0][i] in verb_dic:
-                verb_dic[seg[0][i]] += 1
+                verb_statistics[seg[0][i]] += 1
             else:
-                verb_dic[seg[0][i]] = 1
+                verb_dic.append(seg[0][i])
+                verb_statistics[seg[0][i]] = 1
 
 
 def noun_note(sentence):
@@ -42,9 +49,10 @@ def noun_note(sentence):
     for i in range(0, len(pos[0])):
         if pos[0][i] == 'n':
             if seg[0][i] in noun_dic:
-                noun_dic[seg[0][i]] += 1
+                noun_statistics[seg[0][i]] += 1
             else:
-                noun_dic[seg[0][i]] = 1
+                noun_dic.append(seg[0][i])
+                noun_statistics[seg[0][i]] = 1
 
 
 def adj_note(sentence):
@@ -53,6 +61,7 @@ def adj_note(sentence):
     for i in range(0, len(pos[0])):
         if pos[0][i] == 'a':
             if seg[0][i] in adj_dic:
-                adj_dic[seg[0][i]] += 1
+                adj_statistics[seg[0][i]] += 1
             else:
-                adj_dic[seg[0][i]] = 1
+                adj_dic.append(seg[0][i])
+                adj_statistics[seg[0][i]] = 1

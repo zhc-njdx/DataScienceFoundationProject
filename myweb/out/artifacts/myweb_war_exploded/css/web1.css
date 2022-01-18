@@ -25,7 +25,7 @@ body {
 	padding: 15px;
 	margin: 10px 400px 10px 400px;
 	width: 420px;
-	font-family: my_font1;
+	font-family: my_font1, serif;
 }
 
 .案例 {
@@ -36,16 +36,16 @@ body {
 .分词标注 {
 	background-image: url("../images/背景2.jpeg");
 	margin: 10px 400px 10px 400px;
-	font-family: my_font2;
+	font-family: my_font2, serif;
 }
 
 @font-face { 
 	/* font-properties */ 
 	font-family: my_font1; 
-	src:url('MaShanZheng-Regular.ttf')
+	src:url('../fonts/MaShanZheng-Regular.ttf')
 }
 
 @font-face {
 	font-family: my_font2;
-	src: url('ZCOOLKuaiLe-Regular.ttf');
+	src: url('../fonts/ZCOOLKuaiLe-Regular.ttf');
 }

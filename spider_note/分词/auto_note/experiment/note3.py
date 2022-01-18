@@ -2,7 +2,7 @@ from __future__ import print_function, unicode_literals
 
 import jieba
 
-jieba.load_userdict('word/word.txt')
+jieba.load_userdict('../word/word.txt')
 
 #encoding=utf-8
 import sys
@@ -32,20 +32,21 @@ print("\n" + "="*40)
 
 terms = jieba.cut('easy_install is great')
 print('/'.join(terms))
-terms = jieba.cut('python 的正则表达式是好用的')
+terms = jieba.cut(
+    '本院经审判委员会刑事审判专业委员会讨论决定，依照《中华人民共和国刑事诉讼法》第二百四十六条、第二百五十条和《最高人民法院关于适用〈中华人民共和国刑事诉讼法〉的解释》第三百五十条第（一）项的规定，裁定如下：')
 print('/'.join(terms))
 
-print("="*40)
-# test frequency tune
-testlist = [
-('今天天气不错', ('今天', '天气')),
-('如果放到post中将出错。', ('中', '将')),
-('我们中出了一个叛徒', ('中', '出')),
-]
-
-for sent, seg in testlist:
-    print('/'.join(jieba.cut(sent, HMM=False)))
-    word = ''.join(seg)
-    print('%s Before: %s, After: %s' % (word, jieba.get_FREQ(word), jieba.suggest_freq(seg, True)))
-    print('/'.join(jieba.cut(sent, HMM=False)))
-    print("-"*40)
+# print("="*40)
+# # test frequency tune
+# testlist = [
+# ('今天天气不错', ('今天', '天气')),
+# ('如果放到post中将出错。', ('中', '将')),
+# ('我们中出了一个叛徒', ('中', '出')),
+# ]
+#
+# for sent, seg in testlist:
+#     print('/'.join(jieba.cut(sent, HMM=False)))
+#     word = ''.join(seg)
+#     print('%s Before: %s, After: %s' % (word, jieba.get_FREQ(word), jieba.suggest_freq(seg, True)))
+#     print('/'.join(jieba.cut(sent, HMM=False)))
+#     print("-"*40)

@@ -5,18 +5,21 @@ import re
 import jieba.posseg as poss
 
 case_background = {}
-case_person = {}
+case_other_person = []
+case_main_person = []
 person_statistics = {}
 case_story = {}
 
 ltp = LTP()
-jieba.load_userdict('..\\word\\dic.txt')
-ltp.init_dict('..\\word\\dic.txt')
+jieba.load_userdict('D:\\study\\DataScienceFoundation\\spider_note\\分词\\auto_note\\word\\dic.txt')
+ltp.init_dict('D:\\study\\DataScienceFoundation\\spider_note\\分词\\auto_note\\word\\dic.txt')
+
 
 def info_extract(sentences):
     extract_background(sentences)
     extract_person_info(sentences)
     extract_story(sentences)
+
 
 def extract_background(sentences):
     # 头两行就是总的信息类型
@@ -56,7 +59,7 @@ def extract_background(sentences):
 
             # seg_list = list(jieba.cut(sentences[i]))
             case_background[seg_list[0]] = name
-            case_person[name] = {"身份": seg_list[0]}
+            case_other_person.append(name)
 
     # 相关法院
     case_background["相关法院"] = []
@@ -142,7 +145,11 @@ def deal_person_info_ltp(seg, pos, index):
     if (not no_birthplace) and (birthplace != ""):
         person["出生地"] = birthplace
 
-    case_person[seg[index]] = person
+    if person["身份"] == "未知" and len(person) == 2:
+        if seg[index] not in case_other_person:
+            case_other_person.append(seg[index])
+    else:
+        case_main_person.append(person)
 
 
 # 使用jieba对人物信息进行提取
@@ -158,7 +165,7 @@ def deal_person_info_jieba(sentence, name):
             index = i
             break
 
-    person = {}
+    person = {"姓名": name}
 
     # 人物在案件中的身份
     i = index - 1
@@ -215,7 +222,12 @@ def deal_person_info_jieba(sentence, name):
     if (not no_birthplace) and (birthplace != ""):
         person["出生地"] = birthplace
 
-    case_person[name] = person
+    if re.match("未知|审判长|审判员|书记员|法官助理", person["身份"]) and len(person) == 2:
+        if name not in case_other_person:
+            case_other_person.append(name)
+    else:
+        case_main_person.append(person)
+
 
 
 def extract_person_info(sentences):
@@ -245,7 +257,11 @@ def extract_person_info(sentences):
                         person_statistics[name] = 1
 
 
+# 要改进
 def extract_story(sentences):
+
+    date = 0
+
     # 针对刑事案件有如下
     begin = 0
     end = 0
@@ -255,8 +271,30 @@ def extract_story(sentences):
             begin = i
         if re.match("上述事实.*", sentences[i]) is not None:
             end = i
+        if re.match(".*年.*月.*日", sentences[i]) is None:
+            date = i
     story = []
     for i in range(begin, end):
         story.append(sentences[i])
-    case_story['案由'] = story
+    case_story['案件经过'] = story
     # print(str(begin)+" " + str(end))
+
+    j = date - 1
+    law = []
+    law_name = ""
+    while j != 0:
+        seg, hidden = ltp.seg([sentences[j]])
+        if "《" not in seg[0]:
+            j -= 1
+        else:
+            for i in range(0,len(seg[0])):
+                if seg[0][i] == "《":
+                    law_name = "《"
+                    while seg[0][i] != "》":
+                        i += 1
+                        law_name += seg[0][i]
+                    law.append(law_name)
+            break
+    case_background["法律条文"] = law
+    sentence = sentences[j + 1]
+    case_story["裁定结果"] = sentence

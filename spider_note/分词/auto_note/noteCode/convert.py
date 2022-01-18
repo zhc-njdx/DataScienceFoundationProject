@@ -11,7 +11,7 @@ import re
 import json
 
 # 文书的目录
-dir_name = r'../case'
+dir_name = "D:\\study\\DataScienceFoundation\\spider_note\\分词\\auto_note\\case"
 
 
 # 将目录下的文件放进文件列表中返回
